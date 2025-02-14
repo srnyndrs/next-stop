@@ -28,8 +28,8 @@ Feature and schedule plans for the application.
 
 ### Planning and Preparation
 - [x] Finalize requirements
-- [ ] Research APIs (e.g., BKK API, GTFS, Google Maps)
-- [ ] Design application architecture
+- [x] Research APIs (e.g., BKK API, GTFS, Google Maps)
+- [x] Design application architecture
 - [ ] Create UI wireframes and finalize design
 - [ ] Define data models and core classes
 ### Core Feature Development

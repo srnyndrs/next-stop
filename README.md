@@ -1,14 +1,15 @@
 # Next Stop
-An Android application providing real-time public transport information in Budapest, including bus, tram, metro, and other transit services.
+An Android application providing real-time public transport informations in Budapest, including bus, tram, metro, and other transit services.
 
 ## Technologies
 - Jetpack Compose
-- Retrofit
+- Ktor
 - Room Database
 - DataStore
 - Dagger Hilt
 - Google Maps
-- Location
+- Fused Location Provider
+- Accompanist Permissions
 - Clean Architecture
 
 ## Features
