@@ -1,0 +1,28 @@
+package com.srnyndrs.next_stop.shared.data.remote.dto
+
+import kotlinx.serialization.Serializable
+
+@Serializable
+enum class ResponseStatus {
+    NOT_MODIFIED,
+    OK,
+    UNKNOWN_ERROR,
+    NOT_FOUND,
+    INVALID_VALUE,
+    NOT_OPERATING,
+    OUTSIDE_BOUNDS,
+    PATH_NOT_FOUND,
+    NO_TRANSIT_TIMES,
+    REQUEST_TIMEOUT,
+    BOGUS_PARAMETER,
+    TOO_CLOSE,
+    LOCATION_NOT_ACCESSIBLE,
+    MISSING_MODE,
+    ERROR_NO_GRAPH,
+    PLANNER_SERVICE_UNAVAILABLE,
+    ERROR_VEHICLE_LOCATION_SERVICE,
+    ERROR_BIKE_RENTAL_SERVICE,
+    ERROR_TICKETING_SERVICE,
+    ERROR_TRANSIT_INDEX_SERVICE,
+    MOVED_TEMPORARILY
+}

@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Next Stop</string>
+    <string name="button_label_request_permission">Request permission</string>
+    <string name="permission_grant_ask_beginning">"The"</string>
+    <string name="permission_grant_ask_separator_before_last_permission">" and"</string>
+    <string name="permission_grant_ask_separator">,</string>
+    <string name="permission_grant_ask_singular_permission">" permission is"</string>
+    <string name="permission_grant_ask_multiple_permissions">" permissions are"</string>
+    <string name="permission_grant_ask_rationale">" important. Please grant all of them for the app to function properly."</string>
+    <string name="permission_grant_ask_denied">" denied. The app cannot function without them. Please grant all of them."</string>
+</resources>
