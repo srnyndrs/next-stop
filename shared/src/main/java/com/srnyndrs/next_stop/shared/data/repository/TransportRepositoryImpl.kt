@@ -252,12 +252,15 @@ class TransportRepositoryImpl @Inject constructor(
 
                 val route = data.entry.toRoute()
 
+                val description = data.entry.description
+
                 val variants = data.entry.variants.map { it.toDomain() }
 
                 val stops = references.stops.mapValues { (_, stop) -> stop.toDomain() }
 
                 val result = RouteDetails(
                     route = route,
+                    description = description,
                     variants = variants,
                     stops = stops
                 )

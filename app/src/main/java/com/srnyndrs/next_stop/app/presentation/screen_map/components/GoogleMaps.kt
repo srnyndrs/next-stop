@@ -26,6 +26,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusManager
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.unit.dp
@@ -43,6 +44,7 @@ import com.google.maps.android.compose.MapUiSettings
 import com.google.maps.android.compose.MarkerComposable
 import com.google.maps.android.compose.MarkerState
 import com.srnyndrs.next_stop.app.R
+import com.srnyndrs.next_stop.app.presentation.components.GoogleMapContainer
 import com.srnyndrs.next_stop.app.presentation.screen_map.GoogleMapState
 import com.srnyndrs.next_stop.app.presentation.screen_map.MapScreenEvent
 import com.srnyndrs.next_stop.shared.domain.model.single.latitude
@@ -57,24 +59,8 @@ fun GoogleMaps(
     onEvent: (MapScreenEvent) -> Unit
 ) {
 
-    val context = LocalContext.current
     val scope = rememberCoroutineScope()
-
     val state = googleMapState.value
-
-    val mapProperties = MapProperties(
-        isMyLocationEnabled = true,
-        maxZoomPreference = 18f,
-        minZoomPreference = 12f,
-        mapStyleOptions = MapStyleOptions.loadRawResourceStyle(context, R.raw.map_style)
-    )
-
-    val mapUiSettings = MapUiSettings(
-        myLocationButtonEnabled = false,
-        compassEnabled = false,
-        mapToolbarEnabled = false,
-        zoomControlsEnabled = false
-    )
 
     LaunchedEffect(cameraPositionState.isMoving) {
         if (!cameraPositionState.isMoving) {
@@ -89,11 +75,9 @@ fun GoogleMaps(
     Box(
         modifier = Modifier.then(modifier),
     ) {
-        GoogleMap(
+        GoogleMapContainer(
             modifier = Modifier.fillMaxSize(),
             cameraPositionState = cameraPositionState,
-            properties = mapProperties,
-            uiSettings = mapUiSettings,
             onMapClick = {
                 onEvent(MapScreenEvent.MapClickEvent)
             }
@@ -114,6 +98,7 @@ fun GoogleMaps(
                         MarkerComposable(
                             state = markerState,
                             title = stop.stopName,
+                            anchor = Offset(0.5f, 0.5f),
                             keys = arrayOf(selected, colors, stop),
                             onClick = {
                                 onEvent(MapScreenEvent.MarkerClickEvent(stop))
@@ -123,7 +108,7 @@ fun GoogleMaps(
                             MarkerContent(
                                 selected = selected,
                                 colors = colors,
-                                rotationDegree = stop.direction ?: 0F
+                                rotationDegree = stop.direction
                             )
                         }
                     }

@@ -6,6 +6,7 @@ import com.srnyndrs.next_stop.shared.domain.model.single.Stop
 
 data class RouteDetails(
     val route: Route,
+    val description: String? = null,
     val variants: List<RouteVariant>,
     val stops: Map<String, Stop>
 )

@@ -51,13 +51,13 @@ fun FavouritesScreen(
             contentAlignment = Alignment.TopCenter
         ) {
             UiStateContainer(
-                modifier = Modifier.fillMaxSize().padding(top = 56.dp),
+                modifier = Modifier.fillMaxSize().padding(top = 72.dp),
                 uiState = routes
             ) { data ->
                 LazyVerticalGrid (
-                    modifier = Modifier.fillMaxSize().padding(12.dp),
+                    modifier = Modifier.fillMaxSize().padding(6.dp),
                     verticalArrangement = Arrangement.spacedBy(12.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween,
+                    horizontalArrangement = Arrangement.spacedBy(12.dp),
                     columns = GridCells.Fixed(count = 2)
                 ) {
                     items(data) { route ->

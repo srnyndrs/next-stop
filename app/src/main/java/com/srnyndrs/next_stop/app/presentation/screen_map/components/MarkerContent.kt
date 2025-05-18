@@ -33,7 +33,7 @@ import com.srnyndrs.next_stop.app.presentation.util.fromHex
 fun MarkerContent(
     selected: Boolean,
     colors: List<String>,
-    rotationDegree: Float = 0F
+    rotationDegree: Float? = null
 ) {
 
     val style = colors.map { Color.fromHex(it) }
@@ -48,12 +48,15 @@ fun MarkerContent(
             .aspectRatio(1f),
         contentAlignment = Alignment.Center
     ) {
-        TriangleShape(
-            modifier = Modifier.fillMaxSize(),
-            color = MaterialTheme.colorScheme.onSurface, //Color.White,
-            diameter = size,
-            rotationDegree = rotationDegree
-        )
+        rotationDegree?.let { degree ->
+            TriangleShape(
+                modifier = Modifier.fillMaxSize(),
+                color = MaterialTheme.colorScheme.onSurface,
+                diameter = size,
+                rotationDegree = degree
+            )
+        }
+
         Box(
             modifier = Modifier
                 .fillMaxSize(0.7f)
