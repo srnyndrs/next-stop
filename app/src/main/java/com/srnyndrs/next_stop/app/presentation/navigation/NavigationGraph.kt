@@ -117,7 +117,8 @@ fun NavigationGraph(
                 }
                 RouteDetailsScreen(
                     modifier = Modifier.fillMaxSize(),
-                    viewModel = viewModel
+                    viewModel = viewModel,
+                    navController = navController
                 )
             }
         }

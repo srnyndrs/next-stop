@@ -8,6 +8,7 @@ import com.srnyndrs.next_stop.shared.domain.model.single.PreferenceKey
 import com.srnyndrs.next_stop.shared.domain.model.single.VehicleIcon
 import java.text.SimpleDateFormat
 import java.util.Locale
+import kotlin.math.round
 
 fun Color.Companion.fromHex(colorString: String?): Color {
     return colorString?.let {
@@ -53,6 +54,10 @@ fun Long.formatDateWithPattern(pattern: String): String? {
 fun Long.toDateOnlyMillis(): Long {
     val oneDayInMillis = 24 * 60 * 60 * 1000
     return this / oneDayInMillis * oneDayInMillis
+}
+
+fun Long.toMinutes(): String {
+    return "${round(this / 60f).toInt()} min"
 }
 
 fun currentDateInMillis(): Long {

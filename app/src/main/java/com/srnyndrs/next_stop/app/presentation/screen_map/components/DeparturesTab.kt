@@ -20,11 +20,12 @@ import androidx.compose.ui.unit.dp
 import com.srnyndrs.next_stop.app.presentation.common.UiState
 import com.srnyndrs.next_stop.app.presentation.components.departure.DepartureItem
 import com.srnyndrs.next_stop.app.presentation.screen_map.GoogleMapState
+import com.srnyndrs.next_stop.shared.domain.model.combined.StopDetails
 
 @Composable
 fun DeparturesTab(
     modifier: Modifier = Modifier,
-    googleMapState: State<GoogleMapState>,
+    stopDetails: StopDetails,
     onTripSelect: (String) -> Unit
 ) {
     Column(
@@ -32,53 +33,22 @@ fun DeparturesTab(
         verticalArrangement = Arrangement.spacedBy(12.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        googleMapState.value.selectedStop?.let { selectedStop ->
-            if (googleMapState.value.isLoading) {
-                LinearProgressIndicator()
-            }
-
-            if (googleMapState.value.isError) {
-                Text(
-                    text = "Error: ${googleMapState.value.error?.message}",
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.error
+        LazyColumn(
+            modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            items(items = stopDetails.departures, key = { it.tripId }) { departure ->
+                DepartureItem(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clip(RoundedCornerShape(5.dp))
+                        .clickable {
+                            onTripSelect(departure.tripId)
+                        },
+                    departure = departure,
+                    trip = stopDetails.trips[departure.tripId]!!,
+                    route = stopDetails.routes[departure.routeId]!!
                 )
-            }
-
-            when (val stopDetailsState = googleMapState.value.stopDetails) {
-                is UiState.Empty -> {}
-                is UiState.Error -> {
-                    val error = stopDetailsState.message!!
-                    Text(
-                        text = error,
-                        color = MaterialTheme.colorScheme.error
-                    )
-                }
-                is UiState.Loading -> {
-                    LinearProgressIndicator()
-                }
-                is UiState.Success -> {
-                    val stopDetails = stopDetailsState.data!!
-
-                    LazyColumn(
-                        modifier = Modifier.fillMaxSize(),
-                        verticalArrangement = Arrangement.spacedBy(8.dp)
-                    ) {
-                        items(items = stopDetails.departures, key = { it.tripId }) { departure ->
-                            DepartureItem(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .clip(RoundedCornerShape(5.dp))
-                                    .clickable {
-                                        onTripSelect(departure.tripId)
-                                    },
-                                departure = departure,
-                                trip = stopDetails.trips[departure.tripId]!!,
-                                route = stopDetails.routes[departure.routeId]!!
-                            )
-                        }
-                    }
-                }
             }
         }
     }

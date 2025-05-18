@@ -16,7 +16,6 @@ import com.srnyndrs.next_stop.shared.domain.model.single.Alert
 import com.srnyndrs.next_stop.shared.domain.model.single.Departure
 import com.srnyndrs.next_stop.shared.domain.model.single.Location
 import com.srnyndrs.next_stop.shared.domain.model.single.Route
-import com.srnyndrs.next_stop.shared.domain.model.single.RouteTripPoint
 import com.srnyndrs.next_stop.shared.domain.model.single.RouteVariant
 import com.srnyndrs.next_stop.shared.domain.model.single.ScheduleTime
 import com.srnyndrs.next_stop.shared.domain.model.single.Stop
@@ -24,7 +23,6 @@ import com.srnyndrs.next_stop.shared.domain.model.single.Trip
 import com.srnyndrs.next_stop.shared.domain.model.single.TripPlan
 import com.srnyndrs.next_stop.shared.domain.model.single.TripPoint
 import com.srnyndrs.next_stop.shared.domain.model.single.VehicleIcon
-import com.srnyndrs.next_stop.shared.domain.model.single.WalkTripPoint
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -113,7 +111,7 @@ fun TransitAlert.toDomain(): Alert {
 fun TransitRouteDetails.toRoute(): Route {
     return Route(
         routeId = this.id,
-        routeName = this.shortName,
+        routeName = this.style.icon?.text ?: this.shortName,
         textColor = this.style.icon?.textColor ?: "FFFFFF",
         backgroundColor = this.style.color ?: "000000",
         iconDisplayType = ShapeType.valueOf(this.style.icon?.type ?: "BOX"),
@@ -150,8 +148,8 @@ fun TransitScheduleStopTime.toDomain(
 fun TransitItinerary.toDomain(): TripPlan {
     return TripPlan(
         duration = duration,
-        startTime = startTime,
-        endTime = endTime,
+        startTime = startTime.formatToDate(),
+        endTime = endTime.formatToDate(),
         points = this.displayedLegs.map { transitDisplayedLeg ->
             transitDisplayedLeg.toDomain()
         }
@@ -159,11 +157,12 @@ fun TransitItinerary.toDomain(): TripPlan {
 }
 
 fun TransitDisplayedLeg.toDomain(): TripPoint {
-    val formattedTime = time.formatToDate()
-    return when(this.type) {
-        "route" -> RouteTripPoint(type, name, formattedTime, routeId, wheelchairAccessible, hasAlert)
-        else -> WalkTripPoint(type, name, formattedTime)
-    }
+    return TripPoint(
+        type = this.type,
+        name = this.name,
+        time = this.time.formatToDate(),
+        routeId = this.routeId
+    )
 }
 
 fun decodePolyline(encoded: String): List<Location> {

@@ -320,10 +320,11 @@ class TransportRepositoryImpl @Inject constructor(
 
                 // Process data
                 val data = response.data
-                val references = data.references // TODO
+                val references = data.references
 
                 val tripPlanResult = TripPlanResult(
-                    plans = data.entry.plan.itineraries.map { it.toDomain() }
+                    plans = data.entry.plan.itineraries.map { it.toDomain() },
+                    routes = references.routes.map { it.key to it.value.toDomain() }.toMap()
                 )
 
                 Result.success(tripPlanResult)

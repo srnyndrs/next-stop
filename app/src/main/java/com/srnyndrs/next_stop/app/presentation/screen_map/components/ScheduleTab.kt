@@ -41,7 +41,6 @@ import com.srnyndrs.next_stop.shared.domain.model.single.ScheduleTime
 import com.srnyndrs.next_stop.shared.domain.model.single.VehicleIcon
 import com.srnyndrs.next_stop.shared.domain.model.combined.StopSchedule
 
-@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun ScheduleTab(
     modifier: Modifier = Modifier,
@@ -59,6 +58,18 @@ fun ScheduleTab(
             .groupBy { it.arrivalTime.take(2) }
     }
 
+    val handleSelection = { routeId: String, newValue: Boolean ->
+        selectedRoutes = if(newValue) {
+            selectedRoutes.toMutableList().apply {
+                add(routeId)
+            }
+        } else {
+            selectedRoutes.toMutableList().apply {
+                remove(routeId)
+            }
+        }
+    }
+
     Column(
         modifier = Modifier
             .verticalScroll(scrollState)
@@ -74,6 +85,9 @@ fun ScheduleTab(
                 Row(
                     modifier = Modifier
                         .clip(RoundedCornerShape(5.dp))
+                        .clickable {
+                            handleSelection(routeId, !selectedRoutes.contains(routeId))
+                        }
                         .background(MaterialTheme.colorScheme.surfaceVariant)
                         .padding(vertical = 3.dp, horizontal = 6.dp),
                     verticalAlignment = Alignment.CenterVertically,
@@ -87,15 +101,7 @@ fun ScheduleTab(
                         modifier = Modifier.size(24.dp),
                         checked = selectedRoutes.contains(routeId),
                         onCheckedChange = { value ->
-                            selectedRoutes = if(value) {
-                                selectedRoutes.toMutableList().apply {
-                                    add(routeId)
-                                }
-                            } else {
-                                selectedRoutes.toMutableList().apply {
-                                    remove(routeId)
-                                }
-                            }
+                            handleSelection(routeId, value)
                         }
                     )
                 }

@@ -52,6 +52,7 @@ import com.srnyndrs.next_stop.app.presentation.screen_map.components.DeparturesT
 import com.srnyndrs.next_stop.app.presentation.screen_map.components.GoogleMaps
 import com.srnyndrs.next_stop.app.presentation.screen_map.components.ScheduleTab
 import com.srnyndrs.next_stop.app.presentation.components.search.SearchViewModel
+import com.srnyndrs.next_stop.app.presentation.components.stop.StopDetails
 import com.srnyndrs.next_stop.shared.domain.model.combined.SearchResult
 import com.srnyndrs.next_stop.shared.domain.model.single.latitude
 import com.srnyndrs.next_stop.shared.domain.model.single.longitude
@@ -106,28 +107,28 @@ fun MapScreen(
         modifier = Modifier.then(modifier),
         scaffoldState = scaffoldSheetState,
         sheetPeekHeight = 92.dp,
-        sheetSwipeEnabled = bottomSheetState.currentValue != SheetValue.Expanded,
+        //sheetSwipeEnabled = bottomSheetState.currentValue != SheetValue.Expanded,
         sheetShape = when(scaffoldSheetState.bottomSheetState.currentValue) {
             SheetValue.Expanded -> RectangleShape
             else -> BottomSheetDefaults.ExpandedShape
         },
-        sheetDragHandle = {
+        /*sheetDragHandle = {
             AnimatedVisibility(
                 visible = (scaffoldSheetState.bottomSheetState.currentValue != SheetValue.Expanded)
                         || (scaffoldSheetState.bottomSheetState.targetValue != SheetValue.Expanded)
             ) {
                 BottomSheetDefaults.DragHandle()
             }
-        },
+        },*/
         sheetContainerColor = MaterialTheme.colorScheme.surface,
         sheetContent = {
-            Column(
+            /*Column(
                 modifier = Modifier.fillMaxSize().padding(6.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.spacedBy(12.dp)
-            ) {
+            ) {*/
                 // Title
-                Row(
+                /*Row(
                     modifier = Modifier.fillMaxWidth(),
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = if(bottomSheetState.currentValue == SheetValue.Expanded) {
@@ -175,49 +176,31 @@ fun MapScreen(
                             Icon(
                                 modifier = Modifier.rotate(45f),
                                 imageVector = Lucide.Plus,
-                                contentDescription = null // TODO
+                                contentDescription = "Close window" // TODO
                             )
                         }
                     }
-                }
+                }*/
                 // Content
-                AnimatedVisibility(
+                /*AnimatedVisibility(
                     visible = bottomSheetState.currentValue == SheetValue.Expanded
-                ) {
-                    // Tabs
-                    TabRowComponent(
+                ) {*/
+                    StopDetails(
                         modifier = Modifier.fillMaxSize(),
-                        containerColor = MaterialTheme.colorScheme.surface,
-                        contentColor = MaterialTheme.colorScheme.onSurface,
-                        tabs = listOf("Departures", "Schedule"),
-                        contentScreens = listOf (
-                            {
-                                DeparturesTab(
-                                    modifier = Modifier.fillMaxSize(),
-                                    googleMapState = googleMapState,
-                                    onTripSelect = { tripId ->
-                                        navController.navigate(Screen.TripDetailsScreen.passTripId(tripId))
-                                    }
-                                )
-                            },
-                            {
-                                UiStateContainer(
-                                    modifier = Modifier.fillMaxSize(),
-                                    uiState = googleMapState.value.stopSchedule
-                                ) { data ->
-                                    ScheduleTab(
-                                        modifier = Modifier.fillMaxSize(),
-                                        stopSchedule = data,
-                                        onTripSelect = { tripId ->
-                                            navController.navigate(Screen.TripDetailsScreen.passTripId(tripId))
-                                        }
-                                    )
-                                }
+                        stopName = googleMapState.value.selectedStop?.stopName ?: "Selected stop",
+                        stopDetails = googleMapState.value.stopDetails,
+                        stopSchedule = googleMapState.value.stopSchedule,
+                        onStopClick = {
+                            val stopLocation = googleMapState.value.selectedStop?.location
+                            stopLocation?.let {  (lat, lon) ->
+                                navController.navigate(Screen.TripPlannerScreen.passDestination("$lat,$lon"))
                             }
-                        )
-                    )
-                }
-            }
+                        }
+                    ) { tripId ->
+                        navController.navigate(Screen.TripDetailsScreen.passTripId(tripId))
+                    }
+                //}
+            //}
         }
     ) { paddingValues ->
 

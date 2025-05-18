@@ -69,7 +69,7 @@ fun TripPlannerScreen(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = "Trip plans",
+                    text = "Results",
                     style = MaterialTheme.typography.headlineMedium
                 )
                 if(state !is UiState.Empty) {
@@ -87,12 +87,13 @@ fun TripPlannerScreen(
                                     modifier = Modifier.fillMaxSize(),
                                     containerColor = MaterialTheme.colorScheme.secondaryContainer,
                                     contentColor = MaterialTheme.colorScheme.onSecondaryContainer,
-                                    tabs = tripPlans.indices.toList().map { index -> "Option ${index+1}" },
+                                    tabs = tripPlans.indices.toList().map { index -> "Plan ${index+1}." },
                                     contentScreens = tripPlans.map { tripPlan ->
                                         {
                                             TripPlanContent(
                                                 modifier = Modifier.fillMaxSize(),
-                                                tripPlan = tripPlan
+                                                tripPlan = tripPlan,
+                                                routes = data.routes
                                             )
                                         }
                                     }

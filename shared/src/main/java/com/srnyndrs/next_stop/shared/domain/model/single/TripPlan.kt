@@ -7,23 +7,9 @@ data class TripPlan(
     val points: List<TripPoint>
 )
 
-interface TripPoint {
-    val type: String // walk, route
-    val name: String // Origin, Destination
-    val time: String
-}
-
-data class RouteTripPoint(
-    override val type: String,
-    override val name: String,
-    override val time: String,
-    val routeId: String? = null,
-    val wheelchairAccessible: Boolean? = null,
-    val hasAlert: Boolean? = null
-): TripPoint
-
-data class WalkTripPoint(
-    override val type: String,
-    override val name: String,
-    override val time: String
-): TripPoint
+data class TripPoint (
+    val type: String, // walk, route
+    val name: String, // Origin, Destination
+    val time: String,
+    val routeId: String? = null
+)

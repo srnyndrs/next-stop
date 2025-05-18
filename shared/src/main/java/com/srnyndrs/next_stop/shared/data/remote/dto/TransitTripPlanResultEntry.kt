@@ -36,8 +36,8 @@ data class TransitPlace(
 @Serializable
 data class TransitItinerary(
     val duration: Long,
-    val startTime: String,
-    val endTime: String,
+    val startTime: Long,
+    val endTime: Long,
     val walkTime: Long,
     val bikeTime: Long,
     val transitTime: Long,
