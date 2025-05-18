@@ -1,6 +1,5 @@
 package com.srnyndrs.next_stop.shared.data.remote.dto
 
-import android.health.connect.ReadRecordsRequestUsingIds
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

@@ -1,4 +1,4 @@
-package com.srnyndrs.next_stop.app.presentation.components
+package com.srnyndrs.next_stop.app.presentation.components.maps
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -23,7 +23,7 @@ fun GoogleMapContainer(
 
     val mapProperties = MapProperties(
         isMyLocationEnabled = true,
-        maxZoomPreference = 18f,
+        maxZoomPreference = 20f,
         minZoomPreference = 12f,
         mapStyleOptions = MapStyleOptions.loadRawResourceStyle(context, R.raw.map_style)
     )

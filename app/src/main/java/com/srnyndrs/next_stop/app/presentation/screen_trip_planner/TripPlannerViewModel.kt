@@ -45,7 +45,7 @@ class TripPlannerViewModel @AssistedInject constructor(
                 RouteType.RAIL,
                 RouteType.COACH,
                 RouteType.WALK
-            ) // TODO
+            )
         ).fold(
             onSuccess = {
                 _tripPlanState.value = UiState.Success(data = it)
@@ -55,5 +55,4 @@ class TripPlannerViewModel @AssistedInject constructor(
             }
         )
     }
-
 }

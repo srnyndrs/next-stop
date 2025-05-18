@@ -68,13 +68,6 @@ class MapViewModel @Inject constructor(
         )
     }
 
-    /*private fun onSelectionChange(stop: Stop) = viewModelScope.launch(Dispatchers.IO) {
-        _state.value = _state.value.copy(selectedStop = stop, isLoading = true)
-        getStopDetailsUseCase(stopId = stop.stopId)
-            .onSuccess { _state.value = _state.value.copy(stopDetails = it, isLoading = false, error = null) }
-            .onFailure { _state.value = _state.value.copy(stopDetails = null, isLoading = false, error = it) }
-    }*/
-
     private fun getStopDetails(stopId: String) = viewModelScope.launch(Dispatchers.IO) {
         _state.value = _state.value.copy(stopDetails = UiState.Loading())
         getStopDetailsUseCase(stopId = stopId)
@@ -118,7 +111,7 @@ class MapViewModel @Inject constructor(
             is MapScreenEvent.GetStopDetailsEvent -> {
                 getStopDetails(event.stopId)
                 getCurrentDateUseCase()?.let { date ->
-                    getStopSchedule(event.stopId, date) // TODO
+                    getStopSchedule(event.stopId, date)
                 } ?: _state.value.copy(stopSchedule = UiState.Empty())
             }
         }

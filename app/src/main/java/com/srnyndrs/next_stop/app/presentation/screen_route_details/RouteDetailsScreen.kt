@@ -1,6 +1,5 @@
 package com.srnyndrs.next_stop.app.presentation.screen_route_details
 
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -33,20 +32,17 @@ import androidx.navigation.NavController
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.maps.android.compose.CameraPositionState
-import com.google.maps.android.compose.GoogleMap
 import com.google.maps.android.compose.MarkerComposable
 import com.google.maps.android.compose.MarkerState
 import com.google.maps.android.compose.Polyline
-import com.google.maps.android.compose.rememberMarkerState
 import com.srnyndrs.next_stop.app.presentation.common.LoadingType
-import com.srnyndrs.next_stop.app.presentation.components.GoogleMapContainer
+import com.srnyndrs.next_stop.app.presentation.components.maps.GoogleMapContainer
 import com.srnyndrs.next_stop.app.presentation.components.TabRowComponent
 import com.srnyndrs.next_stop.app.presentation.components.UiStateContainer
 import com.srnyndrs.next_stop.app.presentation.components.route.RouteIcon
 import com.srnyndrs.next_stop.app.presentation.components.stop.StopDetails
 import com.srnyndrs.next_stop.app.presentation.navigation.Screen
-import com.srnyndrs.next_stop.app.presentation.screen_map.MapScreenEvent
-import com.srnyndrs.next_stop.app.presentation.screen_map.components.MarkerContent
+import com.srnyndrs.next_stop.app.presentation.components.stop.marker.MarkerContent
 import com.srnyndrs.next_stop.app.presentation.util.fromHex
 import com.srnyndrs.next_stop.shared.domain.model.single.Stop
 import com.srnyndrs.next_stop.shared.domain.model.single.latitude
@@ -105,12 +101,6 @@ fun RouteDetailsScreen(
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
-                    /*Text(
-                        text = stop.stopName,
-                        style = MaterialTheme.typography.titleLarge,
-                        maxLines = 1,
-                        overflow = TextOverflow.Ellipsis
-                    )*/
                     StopDetails(
                         modifier = Modifier.fillMaxSize(),
                         stopName = stop.stopName,

@@ -62,7 +62,6 @@ fun RouteIcon(
             Image(
                 modifier = Modifier
                     .fillMaxSize(0.8f)
-                    //.size(24.dp)
                     .align(Alignment.CenterStart),
                 painter = route.routeType.toPainterResource(),
                 contentDescription = "${route.routeType.name} icon"
@@ -70,7 +69,6 @@ fun RouteIcon(
             Box(
                 modifier = Modifier
                     .fillMaxHeight()
-                    //.requiredWidth(12.dp)
                     .align(Alignment.TopEnd)
             ) {
                 // Alert

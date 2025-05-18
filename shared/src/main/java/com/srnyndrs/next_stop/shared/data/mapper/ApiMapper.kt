@@ -33,7 +33,7 @@ fun TransitScheduleStopTime.toDomain(
 ): Departure {
     return Departure(
         routeId = routeId,
-        stopId = this.stopId ?: "unknown", // TODO
+        stopId = this.stopId ?: "unknown",
         tripId = this.tripId,
         alertIds = this.alertIds,
         wheelchairAccessible = this.wheelchairAccessible,
@@ -104,7 +104,7 @@ fun TransitRoute.toDomain(): Route {
 fun TransitAlert.toDomain(): Alert {
     return Alert(
         alertId = this.id,
-        description = this.header?.translations?.get("hu") ?: "unknown" // TODO
+        description = this.header?.translations?.get("hu") ?: "unknown"
     )
 }
 
@@ -221,5 +221,5 @@ fun Long.formatToDifference(): String {
     val currentTimeInMillis = System.currentTimeMillis()
     val difference = this - currentTimeInMillis
     val differenceInMinutes = max(0, difference / 60000)
-    return if(differenceInMinutes > 0) "$differenceInMinutes\'" else "NOW" // TODO
+    return if(differenceInMinutes > 0) "$differenceInMinutes\'" else "NOW"
 }

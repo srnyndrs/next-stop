@@ -1,7 +1,6 @@
 package com.srnyndrs.next_stop.app
 
 import android.os.Bundle
-import android.window.SplashScreen
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -16,7 +15,6 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             NextStopTheme {
-                // TODO -> splash screen
                 NextStopApp()
             }
         }

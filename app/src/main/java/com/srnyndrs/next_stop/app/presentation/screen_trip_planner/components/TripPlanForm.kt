@@ -6,9 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -16,10 +14,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -32,7 +28,6 @@ import com.srnyndrs.next_stop.app.presentation.components.SingleChoiceSegmentedB
 import com.srnyndrs.next_stop.app.presentation.components.picker.DatePickerRow
 import com.srnyndrs.next_stop.app.presentation.ui.theme.NextStopTheme
 import com.srnyndrs.next_stop.app.presentation.util.currentDateInMillis
-import com.srnyndrs.next_stop.app.presentation.util.formatDateWithPattern
 
 @Composable
 fun TripPlanForm(

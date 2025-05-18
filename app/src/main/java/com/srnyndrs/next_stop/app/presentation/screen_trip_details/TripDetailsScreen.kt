@@ -19,6 +19,7 @@ fun TripDetailsScreen(
     viewModel: TripDetailsViewModel,
     navController: NavController
 ) {
+
     val tripDetailsState by viewModel.tripDetails.collectAsStateWithLifecycle()
 
     Column(

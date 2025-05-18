@@ -5,6 +5,6 @@ import com.srnyndrs.next_stop.shared.domain.model.single.ScheduleTime
 
 data class StopSchedule(
     val stopId: String,
-    val schedule: List<ScheduleTime>, // RouteId
+    val schedule: List<ScheduleTime>,
     val routes: Map<String, Route>
 )

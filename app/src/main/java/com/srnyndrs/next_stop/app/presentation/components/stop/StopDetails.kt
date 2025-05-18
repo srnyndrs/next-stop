@@ -1,6 +1,5 @@
 package com.srnyndrs.next_stop.app.presentation.components.stop
 
-import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -11,7 +10,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.SheetValue
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -20,16 +18,11 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.max
 import com.composables.icons.lucide.ExternalLink
 import com.composables.icons.lucide.Lucide
-import com.composables.icons.lucide.MoveUpRight
 import com.srnyndrs.next_stop.app.presentation.common.UiState
 import com.srnyndrs.next_stop.app.presentation.components.TabRowComponent
 import com.srnyndrs.next_stop.app.presentation.components.UiStateContainer
-import com.srnyndrs.next_stop.app.presentation.navigation.Screen
-import com.srnyndrs.next_stop.app.presentation.screen_map.components.DeparturesTab
-import com.srnyndrs.next_stop.app.presentation.screen_map.components.ScheduleTab
 import com.srnyndrs.next_stop.shared.domain.model.combined.StopDetails
 import com.srnyndrs.next_stop.shared.domain.model.combined.StopSchedule
 
@@ -61,11 +54,11 @@ fun StopDetails(
                 style = MaterialTheme.typography.titleLarge,
                 textAlign = TextAlign.Center,
                 maxLines = 2,
-                //overflow = TextOverflow.Ellipsis
+                overflow = TextOverflow.Ellipsis
             )
             Icon(
                 modifier = Modifier.size(12.dp),
-                imageVector = Lucide.MoveUpRight,
+                imageVector = Lucide.ExternalLink,
                 contentDescription = null
             )
         }

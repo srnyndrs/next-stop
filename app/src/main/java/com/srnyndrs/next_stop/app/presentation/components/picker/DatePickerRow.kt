@@ -41,7 +41,7 @@ fun DatePickerRow(
         ) {
             Icon(
                 imageVector = Lucide.ArrowLeft,
-                contentDescription = null // TODO
+                contentDescription = "Previous day"
             )
         }
         Text(
@@ -55,7 +55,7 @@ fun DatePickerRow(
         ) {
             Icon(
                 imageVector = Lucide.ArrowRight,
-                contentDescription = null // TODO
+                contentDescription = "Next day"
             )
         }
     }

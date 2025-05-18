@@ -1,6 +1,5 @@
 package com.srnyndrs.next_stop.app.presentation.screen_settings.components
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.requiredHeight
@@ -25,8 +24,7 @@ fun PreferenceList(
     val list = preferences.flatMap { (key, value) -> listOf(key to value) }
 
     LazyColumn(
-        modifier = Modifier.then(modifier),
-        //verticalArrangement = Arrangement.spacedBy(12.dp)
+        modifier = Modifier.then(modifier)
     ) {
         items(list) { (preferenceKey, value) ->
             PreferenceRow(

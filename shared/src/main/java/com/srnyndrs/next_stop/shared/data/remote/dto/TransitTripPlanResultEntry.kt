@@ -29,8 +29,7 @@ data class TransitTripPlan(
 
 @Serializable
 data class TransitPlace(
-    val name: String,
-    // TODO
+    val name: String
 )
 
 @Serializable
@@ -46,7 +45,6 @@ data class TransitItinerary(
     val walkDistance: Double,
     val walkLimitExceeded: Boolean,
     val displayedLegs: List<TransitDisplayedLeg>
-    // TODO
 )
 
 @Serializable

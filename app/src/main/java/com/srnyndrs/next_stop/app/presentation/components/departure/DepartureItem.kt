@@ -58,7 +58,7 @@ fun DepartureItem(
             Text(
                 text = trip.tripHeadsign,
                 style = MaterialTheme.typography.bodyLarge,
-                maxLines = 1, // TODO
+                maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
         }

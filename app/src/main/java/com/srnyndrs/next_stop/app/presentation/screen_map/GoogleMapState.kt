@@ -9,10 +9,7 @@ import com.srnyndrs.next_stop.shared.domain.model.combined.StopSchedule
 
 data class GoogleMapState(
     val cameraPosition: CameraPosition = CameraPosition.fromLatLngZoom(LatLng(47.497913, 19.040236), 10f),
-    val searchTerm: String = "",
     val isLoading: Boolean = false,
-    val error: Throwable? = null,
-    val isError: Boolean = error != null,
     val stops: List<Stop> = emptyList(),
     val selectedStop: Stop? = null,
     val stopDetails: UiState<StopDetails> = UiState.Empty(),

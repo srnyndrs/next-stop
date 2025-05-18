@@ -14,7 +14,7 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import com.srnyndrs.next_stop.app.presentation.sample.StopPreviewParameterProvider
-import com.srnyndrs.next_stop.app.presentation.screen_map.components.MarkerContent
+import com.srnyndrs.next_stop.app.presentation.components.stop.marker.MarkerContent
 import com.srnyndrs.next_stop.app.presentation.ui.theme.NextStopTheme
 import com.srnyndrs.next_stop.shared.domain.model.single.Stop
 

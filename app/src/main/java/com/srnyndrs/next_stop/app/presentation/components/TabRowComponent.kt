@@ -33,28 +33,24 @@ fun TabRowComponent(
     onTabChange: (Int) -> Unit = {},
     contentScreens: List<@Composable () -> Unit>
 ) {
-    // State to keep track of the selected tab index
+
     var selectedTabIndex by remember { mutableIntStateOf(0) }
 
-    // Column layout to arrange tabs vertically and display content screens
     Column(
         modifier = Modifier.then(modifier),
         verticalArrangement = Arrangement.spacedBy(6.dp)
     ) {
-        // TabRow composable to display tabs
         TabRow(
             selectedTabIndex = selectedTabIndex,
             containerColor = containerColor,
             contentColor = contentColor,
             indicator = { tabPositions ->
-                // Indicator for the selected tab
                 TabRowDefaults.SecondaryIndicator(
                     modifier = Modifier.tabIndicatorOffset(tabPositions[selectedTabIndex]),
                     color = indicatorColor
                 )
             }
         ) {
-            // Iterate through each tab title and create a tab
             tabs.forEachIndexed { index, tabTitle ->
                 Tab(
                     modifier = Modifier.padding(all = 16.dp),
@@ -64,7 +60,6 @@ fun TabRowComponent(
                         onTabChange(index)
                     }
                 ) {
-                    // Text displayed on the tab
                     Text(
                         text = tabTitle,
                         maxLines = 1,
@@ -74,7 +69,6 @@ fun TabRowComponent(
             }
         }
 
-        // Display the content screen corresponding to the selected tab
         contentScreens.getOrNull(selectedTabIndex)?.invoke()
     }
 }

@@ -16,19 +16,11 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.State
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.focus.FocusManager
-import androidx.compose.ui.focus.FocusRequester
-import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.unit.dp
 import com.composables.icons.lucide.LocateFixed
 import com.composables.icons.lucide.Lucide
@@ -36,15 +28,11 @@ import com.composables.icons.lucide.Minus
 import com.composables.icons.lucide.Plus
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.maps.android.compose.CameraPositionState
-import com.google.maps.android.compose.GoogleMap
-import com.google.maps.android.compose.MapProperties
-import com.google.maps.android.compose.MapUiSettings
 import com.google.maps.android.compose.MarkerComposable
 import com.google.maps.android.compose.MarkerState
-import com.srnyndrs.next_stop.app.R
-import com.srnyndrs.next_stop.app.presentation.components.GoogleMapContainer
+import com.srnyndrs.next_stop.app.presentation.components.maps.GoogleMapContainer
+import com.srnyndrs.next_stop.app.presentation.components.stop.marker.MarkerContent
 import com.srnyndrs.next_stop.app.presentation.screen_map.GoogleMapState
 import com.srnyndrs.next_stop.app.presentation.screen_map.MapScreenEvent
 import com.srnyndrs.next_stop.shared.domain.model.single.latitude
@@ -144,7 +132,7 @@ fun GoogleMaps(
             ) {
                 Icon(
                     imageVector = Lucide.LocateFixed,
-                    contentDescription = "User Location" // TODO
+                    contentDescription = "User Location"
                 )
             }
             // Zoom options
@@ -168,7 +156,7 @@ fun GoogleMaps(
                 ) {
                     Icon(
                         imageVector = Lucide.Plus,
-                        contentDescription = "Zoom In" // TODO
+                        contentDescription = "Zoom In"
                     )
                 }
                 IconButton(
@@ -187,7 +175,7 @@ fun GoogleMaps(
                 ) {
                     Icon(
                         imageVector = Lucide.Minus,
-                        contentDescription = "Zoom Out" // TODO
+                        contentDescription = "Zoom Out"
                     )
                 }
             }

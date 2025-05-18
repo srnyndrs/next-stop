@@ -19,7 +19,6 @@ import androidx.compose.ui.unit.dp
 import com.composables.icons.lucide.CircleDot
 import com.composables.icons.lucide.FlagTriangleRight
 import com.composables.icons.lucide.Lucide
-import com.composables.icons.lucide.MousePointer2
 import com.srnyndrs.next_stop.app.R
 import com.srnyndrs.next_stop.app.presentation.components.route.RouteIcon
 import com.srnyndrs.next_stop.app.presentation.sample.RoutePreviewParameterProvider

@@ -71,9 +71,7 @@ dependencies {
     implementation(libs.icons.lucide)
     // Google Maps
     implementation(libs.maps.compose)
-    // -----
     implementation(libs.play.services.maps)
-    // -----
     implementation(libs.android.maps.utils)
     // Time Picker
     implementation(libs.picktime.compose)

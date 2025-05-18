@@ -22,7 +22,6 @@ ksp = "2.0.0-1.0.22"
 hilt = "2.50"
 navigationCompose = "2.8.7"
 picktimeCompose = "1.1.2"
-places = "4.2.0"
 playServicesLocation = "21.3.0"
 playServicesMaps = "19.1.0"
 roomRuntime = "2.6.1"
@@ -62,7 +61,6 @@ material = { group = "com.google.android.material", name = "material", version.r
 hilt-android-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 picktime-compose = { module = "com.github.anhaki:PickTime-Compose", version.ref = "picktimeCompose" }
-places = { module = "com.google.android.libraries.places:places", version.ref = "places" }
 play-services-location = { module = "com.google.android.gms:play-services-location", version.ref = "playServicesLocation" }
 play-services-maps = { module = "com.google.android.gms:play-services-maps", version.ref = "playServicesMaps" }
 secrets-gradle-plugin = { module = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin", version.ref = "secretsGradlePlugin" }

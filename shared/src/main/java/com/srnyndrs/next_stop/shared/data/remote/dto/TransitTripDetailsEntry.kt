@@ -40,8 +40,8 @@ data class TransitVehicle(
     val deviated: Boolean,
     val stale: Boolean? = null,
     val lastUpdateTime: Long,
-    val status: String, // INCOMING_AT, STOPPED_AT, IN_TRANSIT_TO
-    val congestionLevel: String? = null, // UNKNOWN, CONGESTION
+    val status: String,
+    val congestionLevel: String? = null,
     val stopDistancePercent: Int,
     val wheelchairAccessible: Boolean,
     val occupancy: TransitVehicleOccupancy? = null,

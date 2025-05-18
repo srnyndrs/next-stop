@@ -8,8 +8,8 @@ data class TripPlan(
 )
 
 data class TripPoint (
-    val type: String, // walk, route
-    val name: String, // Origin, Destination
+    val type: String,
+    val name: String,
     val time: String,
     val routeId: String? = null
 )

@@ -1,4 +1,4 @@
-package com.srnyndrs.next_stop.app.presentation.screen_map.components
+package com.srnyndrs.next_stop.app.presentation.components.stop.marker
 
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.background

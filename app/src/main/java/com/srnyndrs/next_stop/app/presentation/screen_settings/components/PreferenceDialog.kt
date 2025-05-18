@@ -15,24 +15,19 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.text.toLowerCase
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import com.srnyndrs.next_stop.app.presentation.ui.theme.NextStopTheme
-import com.srnyndrs.next_stop.app.presentation.util.validate
 import com.srnyndrs.next_stop.shared.domain.model.single.PreferenceKey
-import java.util.Locale
 
 @Composable
 fun PreferenceDialog(
@@ -60,7 +55,7 @@ fun PreferenceDialog(
             ) {
                 // Title
                 Text(
-                    text = "Edit preference", // TODO
+                    text = "Edit preference",
                     style = MaterialTheme.typography.headlineSmall
                 )
                 // Preference
@@ -107,7 +102,7 @@ fun PreferenceDialog(
                         )
                     ) {
                         Text(
-                            text = "Cancel", // TODO
+                            text = "Cancel",
                             style = MaterialTheme.typography.bodyMedium
                         )
                     }
@@ -124,7 +119,7 @@ fun PreferenceDialog(
                         )
                     ) {
                         Text(
-                            text = "Confirm", // TODO
+                            text = "Confirm",
                             style = MaterialTheme.typography.bodyMedium
                         )
                     }

@@ -69,7 +69,7 @@ data class TransitStop(
     val lat: Double,
     val lon: Double,
     val name: String,
-    val code: String,
+    val code: String? = null,
     val direction: String,
     val platformCode: String? = null,
     val description: String? = null,
@@ -125,5 +125,5 @@ data class TransitAlertRoute(
     val routeId: String,
     val stopIds: List<String>,
     val header: TranslatedString? = null,
-    val effectType: String // NO_SERVICE, WARNING enum
+    val effectType: String
 )

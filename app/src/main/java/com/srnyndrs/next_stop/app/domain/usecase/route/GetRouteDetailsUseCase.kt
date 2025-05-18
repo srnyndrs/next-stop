@@ -15,6 +15,6 @@ class GetRouteDetailsUseCase @Inject constructor(
                 routeId = routeId,
                 date = date
             )
-        } ?: Result.failure(Exception()) // TODO
+        } ?: Result.failure(Exception("Unable to get current date"))
     }
 }

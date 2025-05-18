@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Refresh
-import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -45,12 +44,12 @@ fun HomeScreen(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 6.dp, vertical = 3.dp),
+                .padding(horizontal = 6.dp, vertical = 8.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
-                text = "Nearby Departures", // TODO
+                text = "Nearby Departures",
                 fontSize = 20.sp,
                 fontWeight = FontWeight.SemiBold
             )
@@ -62,20 +61,9 @@ fun HomeScreen(
             ) {
                 Icon(
                     imageVector = Icons.Default.Refresh,
-                    contentDescription = "Refresh button" // TODO
+                    contentDescription = "Refresh button"
                 )
             }
-            /*IconButton(
-                modifier = Modifier.size(24.dp),
-                onClick = {
-                    navController.navigate(Screen.SearchScreen.route)
-                }
-            ) {
-                Icon(
-                    imageVector = Icons.Default.Search,
-                    contentDescription = "Search button"
-                )
-            }*/
         }
         // Departures
         UiStateContainer(
@@ -83,7 +71,9 @@ fun HomeScreen(
             uiState = departureListState
         ) { data ->
             DepartureList(
-                modifier = Modifier.fillMaxSize().padding(vertical = 4.dp, horizontal = 6.dp),
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(vertical = 4.dp, horizontal = 6.dp),
                 nearbyDepartures = data
             ) { tripId ->
                 navController.navigate(Screen.TripDetailsScreen.passTripId(tripId))

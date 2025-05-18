@@ -1,5 +1,9 @@
 package com.srnyndrs.next_stop.app.presentation.navigation
 
+import androidx.compose.animation.AnimatedContentTransitionScope
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -35,7 +39,15 @@ fun NavigationGraph(
         startDestination = Screen.HomeScreen.route
     ) {
         composable(
-            route = Screen.HomeScreen.route
+            route = Screen.HomeScreen.route,
+            enterTransition = {
+                slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Start, animationSpec = tween(350))
+            },
+            exitTransition = { fadeOut(tween(350)) },
+            popEnterTransition = { fadeIn(tween(350)) },
+            popExitTransition = {
+                slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.End, animationSpec = tween(350))
+            }
         ) {
             val homeViewModel = hiltViewModel<HomeViewModel>()
             HomeScreen(
@@ -47,7 +59,15 @@ fun NavigationGraph(
             }
         }
         composable(
-            route = Screen.MapScreen.route
+            route = Screen.MapScreen.route,
+            enterTransition = {
+                slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Start, animationSpec = tween(350))
+            },
+            exitTransition = { fadeOut(tween(350)) },
+            popEnterTransition = { fadeIn(tween(350)) },
+            popExitTransition = {
+                slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.End, animationSpec = tween(350))
+            }
         ) {
             val mapViewModel = hiltViewModel<MapViewModel>()
             val searchViewModel = hiltViewModel<SearchViewModel, SearchViewModel.SearchViewModelFactory> { factory ->
@@ -64,7 +84,15 @@ fun NavigationGraph(
             )
         }
         composable(
-            route = Screen.FavouritesScreen.route
+            route = Screen.FavouritesScreen.route,
+            enterTransition = {
+                slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Start, animationSpec = tween(350))
+            },
+            exitTransition = { fadeOut(tween(350)) },
+            popEnterTransition = { fadeIn(tween(350)) },
+            popExitTransition = {
+                slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.End, animationSpec = tween(350))
+            }
         ) {
             val searchViewModel = hiltViewModel<SearchViewModel, SearchViewModel.SearchViewModelFactory> { factory ->
                 factory.create(SearchResult.RouteResult::class)
@@ -79,7 +107,15 @@ fun NavigationGraph(
             )
         }
         composable(
-            route = Screen.SettingsScreen.route
+            route = Screen.SettingsScreen.route,
+            enterTransition = {
+                slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Start, animationSpec = tween(350))
+            },
+            exitTransition = { fadeOut(tween(350)) },
+            popEnterTransition = { fadeIn(tween(350)) },
+            popExitTransition = {
+                slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.End, animationSpec = tween(350))
+            }
         ) {
             SettingsScreen(
                 modifier = Modifier.fillMaxSize(),
@@ -90,7 +126,15 @@ fun NavigationGraph(
             route = Screen.TripDetailsScreen.route,
             arguments = listOf(
                 navArgument("tripId") { type = NavType.StringType }
-            )
+            ),
+            enterTransition = {
+                slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Start, animationSpec = tween(350))
+            },
+            exitTransition = { fadeOut(tween(350)) },
+            popEnterTransition = { fadeIn(tween(350)) },
+            popExitTransition = {
+                slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.End, animationSpec = tween(350))
+            }
         ) { navBackStackEntry ->
             val tripIdArgument = navBackStackEntry.arguments?.getString("tripId")
             tripIdArgument?.let { tripId ->
@@ -108,7 +152,15 @@ fun NavigationGraph(
             route = Screen.RouteDetailsScreen.route,
             arguments = listOf(
                 navArgument("routeId") { type = NavType.StringType }
-            )
+            ),
+            enterTransition = {
+                slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Start, animationSpec = tween(350))
+            },
+            exitTransition = { fadeOut(tween(350)) },
+            popEnterTransition = { fadeIn(tween(350)) },
+            popExitTransition = {
+                slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.End, animationSpec = tween(350))
+            }
         ) { navBackStackEntry ->
             val routeIdArgument = navBackStackEntry.arguments?.getString("routeId")
             routeIdArgument?.let { routeId ->
@@ -126,7 +178,15 @@ fun NavigationGraph(
             route = Screen.TripPlannerScreen.route,
             arguments = listOf(
                 navArgument("destination") { type = NavType.StringType }
-            )
+            ),
+            enterTransition = {
+                slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Start, animationSpec = tween(350))
+            },
+            exitTransition = { fadeOut(tween(350)) },
+            popEnterTransition = { fadeIn(tween(350)) },
+            popExitTransition = {
+                slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.End, animationSpec = tween(350))
+            }
         ) { navBackStackEntry ->
             val destinationArgument = navBackStackEntry.arguments?.getString("destination")
             destinationArgument?.let { destination ->

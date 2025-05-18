@@ -77,9 +77,9 @@ fun SearchBar(
                 value = textFieldValue,
                 onValueChange = { newValue ->
                     if (newValue.text != textFieldValue.text) {
-                        //
+                        // Change text field value
                         onTextFieldValueChange(newValue.text)
-                        //
+
                         textFieldValue = newValue
                         // Show suggestions only when typing and input is not empty
                         showSuggestions = newValue.text.isNotEmpty()
@@ -91,7 +91,7 @@ fun SearchBar(
                 if (textFieldValue.text.isEmpty()) {
                     Text(
                         modifier = Modifier.focusRequester(focusRequester),
-                        text = placeholderText, // TODO
+                        text = placeholderText,
                         style = TextStyle(color = Color.Gray, fontSize = 18.sp)
                     )
                 }

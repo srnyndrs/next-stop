@@ -23,7 +23,6 @@ import com.srnyndrs.next_stop.shared.domain.model.single.latitude
 import com.srnyndrs.next_stop.shared.domain.model.single.longitude
 import com.srnyndrs.next_stop.shared.domain.repository.TransportRepository
 import javax.inject.Inject
-import kotlin.math.min
 
 class TransportRepositoryImpl @Inject constructor(
     private val transportService: TransportService
