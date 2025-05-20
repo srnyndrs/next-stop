@@ -197,7 +197,6 @@ fun TripDetails(
                                 modifier = Modifier.fillMaxWidth(),
                                 text = alert.description,
                                 style = MaterialTheme.typography.bodyMedium,
-                                //textAlign = TextAlign.Justify,
                                 overflow = TextOverflow.Ellipsis,
                                 maxLines = 3
                             )
@@ -212,42 +211,6 @@ fun TripDetails(
             verticalArrangement = Arrangement.spacedBy(3.dp),
             state = lazyColumnState
         ) {
-            // Alerts
-            /*itemsIndexed(tripDetails.alerts) { index, alert ->
-                Card(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .requiredHeight(72.dp),
-                    colors = CardDefaults.cardColors(
-                        containerColor = MaterialTheme.colorScheme.errorContainer,
-                        contentColor = MaterialTheme.colorScheme.onErrorContainer,
-                    )
-                ) {
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(8.dp),
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(14.dp)
-                    ) {
-                        Icon(
-                            modifier = Modifier.fillMaxHeight(),
-                            imageVector = Lucide.CircleAlert,
-                            contentDescription = null
-                        )
-                        Text(
-                            modifier = Modifier.fillMaxWidth(),
-                            text = alert.description,
-                            style = MaterialTheme.typography.bodyMedium,
-                            //textAlign = TextAlign.Justify,
-                            overflow = TextOverflow.Ellipsis,
-                            maxLines = 3
-                        )
-                    }
-                }
-                Spacer(modifier = Modifier.requiredHeight(12.dp))
-            }*/
-
             // Stops
             itemsIndexed(tripDetails.schedule.toList()) { index, (stop, time) ->
                 val stopStatus = when(index + 1) {
@@ -288,10 +251,7 @@ fun TripDetails(
                                     Image(
                                         modifier = Modifier
                                             .fillMaxSize(1f)
-                                            //.size(24.dp)
-                                            .align(Alignment.Center)
-                                            //.border(1.dp, color, CircleShape)
-                                        ,
+                                            .align(Alignment.Center),
                                         painter = tripDetails.route.routeType.toPainterResource(),
                                         contentDescription = "${tripDetails.route.routeType.name} icon"
                                     )

@@ -111,7 +111,6 @@ fun ScheduleTab(
             modifier = Modifier.fillMaxWidth(),
             verticalArrangement = Arrangement.spacedBy(18.dp)
         ) {
-            //val schedules = schedule.schedule.sortedBy { it.arrivalTime }.groupBy { it.arrivalTime.take(2) }
             filteredRoutes(selectedRoutes).forEach { (hour, scheduleTimes) ->
                 Row(
                     modifier = Modifier.fillMaxWidth(),
@@ -124,7 +123,6 @@ fun ScheduleTab(
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
                         Text(
-                            //modifier = Modifier.fillMaxWidth(),
                             text = hour,
                             textAlign = TextAlign.Center
                         )
@@ -151,9 +149,6 @@ fun ScheduleTab(
                                     modifier = Modifier.fillMaxWidth(),
                                     text = minute,
                                     textAlign = TextAlign.Center,
-                                    /*color = if(hour <= currentHour && minute < currentMinutes) {
-                                        MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
-                                    } else MaterialTheme.colorScheme.onSurface*/
                                 )
                                 HorizontalDivider()
                             }
